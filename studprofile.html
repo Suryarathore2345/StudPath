@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        body {
+            background-color: #E3FCFF;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #55C5CC;
+            color: #ffffff;
+            padding: 10px 0;
+        }
+
+        header .logo img {
+            height: 50px;
+        }
+
+        header .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        header .nav-links li {
+            margin: 0 15px;
+        }
+
+        header .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header .nav-links a:hover {
+            background-color: #ACEBF9;
+            padding: 5px 10px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .profile-form {
+            background-color: #ffffff;
+            border: 1px solid #ACEBF9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-form h1 {
+            color: #55C5CC;
+            text-align: center;
+        }
+
+        .profile-form label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #62C1D6;
+        }
+
+        .profile-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ACEBF9;
+            border-radius: 3px;
+        }
+
+        .profile-form button {
+            background-color: #62C1D6;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .profile-form button:hover {
+            background-color: #A5EAFA;
+        }
+
+        footer {
+            background-color: #55C5CC;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="C:/Users/Surya/Dropbox/lw/project/images/Ayalogo.webp" alt="Arya College Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile-form">
+            <h1>Student Profile</h1>
+            <form id="student-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="branch">Branch:</label>
+                <input type="text" id="branch" name="branch" required>
+
+                <label for="year">Year:</label>
+                <input type="text" id="year" name="year" required>
+
+                <label for="semester">Semester:</label>
+                <input type="text" id="semester" name="semester" required>
+
+                <label for="rtu_roll_no">RTU Roll No:</label>
+                <input type="text" id="rtu_roll_no" name="rtu_roll_no" required>
+
+                <label for="abc_id">ABC ID:</label>
+                <input type="text" id="abc_id" name="abc_id" required>
+
+                <label for="email_id">Email ID:</label>
+                <input type="email" id="email_id" name="email_id" required>
+
+                <label for="father_name">Father's Name (Optional):</label>
+                <input type="text" id="father_name" name="father_name">
+
+                <label for="mother_name">Mother's Name (Optional):</label>
+                <input type="text" id="mother_name" name="mother_name">
+
+                <label for="contact">Contact (Optional):</label>
+                <input type="text" id="contact" name="contact">
+
+                <label for="address">Address (Optional):</label>
+                <input type="text" id="address" name="address">
+
+                <button type="submit">Create Profile</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 StudPath. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('student-form').addEventListener('submit', createStudentProfile);
+        });
+
+        function createStudentProfile(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const studentData = {
+        name: form.name.value,
+        branch: form.branch.value,
+        year: form.year.value,
+        semester: form.semester.value,
+        rtu_roll_no: form.rtu_roll_no.value,
+        abc_id: form.abc_id.value,
+        email_id: form.email_id.value,
+        father_name: form.father_name.value,
+        mother_name: form.mother_name.value,
+        contact: form.contact.value,
+        address: form.address.value
+    };
+
+    fetch('http://localhost:5000/create_student_profile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(studentData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            alert('Profile Created Successfully!');
+            form.reset();
+        } else {
+            alert('Failed to create profile. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+}
+    </script>
+</body>
+</html>

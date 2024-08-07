@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #2780d3;
+            --color-danger: #ff7782;
+            --color-success: #41f1b6;
+            --color-warning: #ffbb55;
+            --color-white: #fff;
+            --color-info: #7d8da1;
+            --color-dark: #16597b;
+            --color-light: rgb(113 197 221 / 82%);
+            --color-dark-varient: #677483;
+            --color-background: #f6f6f9;
+
+            --card-border-radius: 2rem;
+            --border-radius-1: 0.4rem;
+            --border-radius-2: 1.2rem;
+
+            --card-padding: 1.8rem;
+            --box-shadow: 0 2rem 3rem var(--color-light);    
+        }
+
+        .dark-theme {
+            --color-background: #181a1e;
+            --color-white: #202528;
+            --color-dark: #edeffd;
+            --color-dark-varient: #8b8d98;
+            --color-box-shadow: 0 2rem 3rem rgba(0,0,0,0.1);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: content-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--color-background);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #e0f3fc;
+            box-shadow: var(--box-shadow);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .circular-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            color: var(--color-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .navbar a:hover {
+            color: var(--color-primary);
+        }
+
+        .material-icons-sharp {
+            margin-right: 5px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-dark);
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: var(--color-success);
+            color: var(--color-white);
+            border-radius: var(--border-radius-1);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--color-dark);
+        }
+
+        .features {
+            padding: 50px 10px;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+        }
+
+        .results-table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            text-align: left;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius-2);
+            overflow: hidden;
+        }
+
+        .results-table th, .results-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--color-light);
+        }
+
+        .results-table th {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .results-table tr:hover {
+            background-color: var(--color-light);
+        }
+
+        .form-container {
+            margin: 50px auto;
+            width: 80%;
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius-2);
+            background-color: var(--color-white);
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container form label {
+            margin-bottom: 5px;
+            color: var(--color-dark);
+        }
+
+        .form-container form input, .form-container form button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid var(--color-dark-varient);
+            border-radius: var(--border-radius-1);
+            font-size: 1rem;
+        }
+
+        .form-container form button {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container form button:hover {
+            background-color: var(--color-dark);
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="./assests/Studpath.jpg" alt="Logo" class="circular-logo">
+            <a href="#">Home</a>
+        </div>
+        <div>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Student Results</h1>
+            <a href="#" class="cta-button">View More</a>
+        </div>
+    </div>
+
+    <div class="features">
+        <h2>Results</h2>
+        <h3>Mid-term 1</h3>
+        <table class="results-table" id="midterm1-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Basic Civil Engg</th>
+                    <th>Human Values</th>
+                    <th>Mathematics</th>
+                    <th>PPS</th>
+                    <th>Physics</th>
+                </tr>
+            </thead>
+            <tbody id="midterm1-body">
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+
+        <h3>Mid-term 2</h3>
+        <table class="results-table" id="midterm2-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Basic Civil Engg</th>
+                    <th>Human Values</th>
+                    <th>Mathematics</th>
+                    <th>PPS</th>
+                    <th>Physics</th>
+                </tr>
+            </thead>
+            <tbody id="midterm2-body">
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+
+        <h3>RTU Results</h3>
+        <table class="results-table" id="rtu-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Basic Civil Engg</th>
+                    <th>Human Values</th>
+                    <th>Mathematics</th>
+                    <th>PPS</th>
+                    <th>Physics</th>
+                </tr>
+            </thead>
+            <tbody id="rtu-body">
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-container">
+        <h2>Add Student</h2>
+        <form id="add-student-form">
+            <label for="name">Student Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label>Midterm 1:</label>
+            <label for="midterm1-civil">Basic Civil Engg:</label>
+            <input type="number" id="midterm1-civil" name="midterm1-civil" required>
+            <label for="midterm1-humanValues">Human Values:</label>
+            <input type="number" id="midterm1-humanValues" name="midterm1-humanValues" required>
+            <label for="midterm1-mathematics">Mathematics:</label>
+            <input type="number" id="midterm1-mathematics" name="midterm1-mathematics" required>
+            <label for="midterm1-pps">PPS:</label>
+            <input type="number" id="midterm1-pps" name="midterm1-pps" required>
+            <label for="midterm1-physics">Physics:</label>
+            <input type="number" id="midterm1-physics" name="midterm1-physics" required>
+
+            <label>Midterm 2:</label>
+            <label for="midterm2-civil">Basic Civil Engg:</label>
+            <input type="number" id="midterm2-civil" name="midterm2-civil" required>
+            <label for="midterm2-humanValues">Human Values:</label>
+            <input type="number" id="midterm2-humanValues" name="midterm2-humanValues" required>
+            <label for="midterm2-mathematics">Mathematics:</label>
+            <input type="number" id="midterm2-mathematics" name="midterm2-mathematics" required>
+            <label for="midterm2-pps">PPS:</label>
+            <input type="number" id="midterm2-pps" name="midterm2-pps" required>
+            <label for="midterm2-physics">Physics:</label>
+            <input type="number" id="midterm2-physics" name="midterm2-physics" required>
+
+            <label>RTU Results:</label>
+            <label for="rtu-civil">Basic Civil Engg:</label>
+            <input type="number" id="rtu-civil" name="rtu-civil" required>
+            <label for="rtu-humanValues">Human Values:</label>
+            <input type="number" id="rtu-humanValues" name="rtu-humanValues" required>
+            <label for="rtu-mathematics">Mathematics:</label>
+            <input type="number" id="rtu-mathematics" name="rtu-mathematics" required>
+            <label for="rtu-pps">PPS:</label>
+            <input type="number" id="rtu-pps" name="rtu-pps" required>
+            <label for="rtu-physics">Physics:</label>
+            <input type="number" id="rtu-physics" name="rtu-physics" required>
+
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Student Results. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const midterm1Body = document.getElementById('midterm1-body');
+        const midterm2Body = document.getElementById('midterm2-body');
+        const rtuBody = document.getElementById('rtu-body');
+        const addStudentForm = document.getElementById('add-student-form');
+
+        async function fetchStudents() {
+            const response = await fetch('http://localhost:85/students');
+            const students = await response.json();
+            midterm1Body.innerHTML = '';
+            midterm2Body.innerHTML = '';
+            rtuBody.innerHTML = '';
+
+            students.forEach(student => {
+                const midterm1Row = `
+                    <tr>
+                        <td>${student.name}</td>
+                        <td>${student.midterm1.civil}</td>
+                        <td>${student.midterm1.humanValues}</td>
+                        <td>${student.midterm1.mathematics}</td>
+                        <td>${student.midterm1.pps}</td>
+                        <td>${student.midterm1.physics}</td>
+                    </tr>
+                `;
+
+                const midterm2Row = `
+                    <tr>
+                        <td>${student.name}</td>
+                        <td>${student.midterm2.civil}</td>
+                        <td>${student.midterm2.humanValues}</td>
+                        <td>${student.midterm2.mathematics}</td>
+                        <td>${student.midterm2.pps}</td>
+                        <td>${student.midterm2.physics}</td>
+                    </tr>
+                `;
+
+                const rtuRow = `
+                    <tr>
+                        <td>${student.name}</td>
+                        <td>${student.rtu.civil}</td>
+                        <td>${student.rtu.humanValues}</td>
+                        <td>${student.rtu.mathematics}</td>
+                        <td>${student.rtu.pps}</td>
+                        <td>${student.rtu.physics}</td>
+                    </tr>
+                `;
+
+                midterm1Body.innerHTML += midterm1Row;
+                midterm2Body.innerHTML += midterm2Row;
+                rtuBody.innerHTML += rtuRow;
+            });
+        }
+
+        addStudentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(addStudentForm);
+            const student = {
+                name: formData.get('name'),
+                midterm1: {
+                    civil: parseInt(formData.get('midterm1-civil')),
+                    humanValues: parseInt(formData.get('midterm1-humanValues')),
+                    mathematics: parseInt(formData.get('midterm1-mathematics')),
+                    pps: parseInt(formData.get('midterm1-pps')),
+                    physics: parseInt(formData.get('midterm1-physics'))
+                },
+                midterm2: {
+                    civil: parseInt(formData.get('midterm2-civil')),
+                    humanValues: parseInt(formData.get('midterm2-humanValues')),
+                    mathematics: parseInt(formData.get('midterm2-mathematics')),
+                    pps: parseInt(formData.get('midterm2-pps')),
+                    physics: parseInt(formData.get('midterm2-physics'))
+                },
+                rtu: {
+                    civil: parseInt(formData.get('rtu-civil')),
+                    humanValues: parseInt(formData.get('rtu-humanValues')),
+                    mathematics: parseInt(formData.get('rtu-mathematics')),
+                    pps: parseInt(formData.get('rtu-pps')),
+                    physics: parseInt(formData.get('rtu-physics'))
+                }
+            };
+
+            await fetch('http://localhost:85/students', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(student)
+            });
+
+            fetchStudents();
+            addStudentForm.reset();
+        });
+
+        fetchStudents();
+    </script>
+</body>
+</html>

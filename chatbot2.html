@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Chatbot</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            background-color: #282c34;
+        }
+
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .chatbot {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .chatbot-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .chatbot-body {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chatbot-messages {
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .bot {
+            background: #3498db; /* Updated to match website theme */
+        }
+
+        .user {
+            background: #2980b9; /* Updated to match website theme */
+            align-self: flex-end;
+        }
+
+        .chatbot-input {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        #chatbot-query {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 50px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            margin-right: 10px;
+            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #send-message {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            background: #3498db; /* Updated to match website theme */
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #send-message:hover {
+            background: #2980b9; /* Updated to match website theme */
+            transform: translateY(-2px);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            background: #3498db; /* Updated to match website theme */
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover {
+            background: #2980b9; /* Updated to match website theme */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="./assests/chatanim.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="container">
+        <header>
+            <h1>Chatbot</h1>
+        </header>
+        <main>
+            <div class="chatbot">
+                <div class="chatbot-image">
+                    <img src="./assests/chatbot.jpeg" alt="Chatbot">
+                </div>
+                <div class="chatbot-body">
+                    <div class="chatbot-messages" id="chatbot-messages">
+                        <div class="message bot">Hello! How can I assist you today?</div>
+                    </div>
+                    <div class="chatbot-input">
+                        <input type="text" id="chatbot-query" placeholder="Type your query here...">
+                        <button id="send-message">Send</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <script>
+        document.getElementById('send-message').addEventListener('click', function() {
+            const queryInput = document.getElementById('chatbot-query');
+            const query = queryInput.value.trim();
+            if (query) {
+                addMessage(query, 'user');
+                queryInput.value = '';
+                fetch('http://localhost:82/chatbot', { // Ensure this URL matches your Flask server address
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ query: query })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.response) {
+                        addMessage(data.response, 'bot');
+                    } else {
+                        addMessage('Sorry, I could not understand your query.', 'bot');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    addMessage('An error occurred. Please try again later.', 'bot');
+                });
+            }
+        });
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatbot-messages');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.innerText = text;
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>

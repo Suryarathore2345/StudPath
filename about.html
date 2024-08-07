@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - StudPath</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --color-primary: #2780d3;
+            --color-danger: #ff7782;
+            --color-success: #41f1b6;
+            --color-warning: #ffbb55;
+            --color-white: #fff;
+            --color-info: #7d8da1;
+            --color-dark: #16597b;
+            --color-light: rgb(113 197 221 / 82%);
+            --color-dark-varient: #677483;
+            --color-background: #f6f6f9;
+            
+            --card-border-radius: 2rem;
+            --border-radius-1: 0.4rem;
+            --border-radius-2: 1.2rem;
+
+            --card-padding: 1.8rem;
+            --box-shadow: 0 2rem 3rem var(--color-light);
+        }
+
+        .dark-theme {
+            --color-background: #181a1e;
+            --color-white: #202528;
+            --color-dark: #edeffd;
+            --color-dark-varient: #8b8d98;
+            --color-box-shadow: 0 2rem 3rem rgba(0,0,0,0.1);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--color-background);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--color-white);
+            box-shadow: var(--box-shadow);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .circular-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: var(--color-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .about-header h1 {
+            font-size: 2.5em;
+            color: #2b5876;
+        }
+
+        .about-content, .features {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .about-content p, .features p {
+            font-size: 1.2em;
+            color: #4e4376;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin-bottom: 30px;
+            perspective: 1000px; /* Adding perspective for the 3D effect */
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 1s ease;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            transform-origin: center center; /* Set the origin of transformation */
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .founders {
+            text-align: center;
+        }
+
+        .founders h2 {
+            font-size: 2em;
+            color: #2b5876;
+            margin-bottom: 20px;
+        }
+
+        .founder-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .founder {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .founder img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            padding: 5px; /* Add some padding */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow for better appearance */
+        }
+
+        .founder p {
+            font-size: 1.2em;
+            color: #4e4376;
+        }
+
+        .go-back-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #E3FCFF;
+            color: #2b5876;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+
+        .go-back-button:hover {
+            background-color: #b8e0f1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="./images/Studpath.jpg" alt="StudPath Logo" class="circular-logo">
+                StudPath
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.css">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="about-container">
+            <div class="about-header">
+                <h1>About Us</h1>
+            </div>
+            <div class="about-content">
+                <p>Welcome to our platform, a state-of-the-art solution designed to elevate educational experiences for students and educational institutions alike. Our mission is to provide a comprehensive suite of tools and support systems that ensure academic success, streamline administrative processes, and foster personal growth among students.</p>
+                <p><strong>Our Vision:</strong> We aspire to transform the educational landscape by integrating advanced technology with personalized guidance, thereby creating an environment where every student can achieve their full potential both academically and personally.</p>
+                <p><strong>Our Mission:</strong> To empower students and educational institutions by providing innovative, data-driven solutions that enhance learning outcomes, optimize resources, and foster holistic development.</p>
+            </div>
+            <div class="features">
+                <h2>What We Offer</h2>
+                <p><strong>1. Personalized Guidance:</strong></p>
+                <ul>
+                    <li><strong>Tailored Support:</strong> Every student is unique, and so is our support. We provide customized assistance to help students navigate their academic and extracurricular journeys effectively.</li>
+                    <li><strong>Expert Advice:</strong> Our platform offers access to educational experts who provide personalized recommendations and insights, helping students make informed decisions about their education and career paths.</li>
+                    <li><strong>Mentorship Programs:</strong> Connect students with mentors who can guide them through their academic and professional development.</li>
+                </ul>
+                <p><strong>2. Comprehensive Tracking:</strong></p>
+                <ul>
+                    <li><strong>Academic Progress Monitoring:</strong> Track and analyze student performance through detailed reports and dashboards, ensuring that they stay on track with their educational goals.</li>
+                    <li><strong>Extracurricular Activity Management:</strong> Keep a record of students' participation in sports, clubs, and other activities, promoting a well-rounded educational experience.</li>
+                    <li><strong>Behavioral Insights:</strong> Use data analytics to understand student behavior and engagement, allowing for timely interventions and support.</li>
+                </ul>
+                <p><strong>3. Custom College Management System:</strong></p>
+                <ul>
+                    <li><strong>Efficient Administration:</strong> Our system is designed to streamline administrative tasks, from admissions and enrollment to attendance tracking and grading.</li>
+                    <li><strong>Resource Management:</strong> Optimize the use of resources, such as faculty, facilities, and budgets, to enhance the educational environment.</li>
+                    <li><strong>Automated Processes:</strong> Reduce manual workloads with automation of routine tasks like scheduling, notifications, and reporting.</li>
+                    <li><strong>Secure Data Management:</strong> Ensure the security and privacy of student and institutional data with robust data protection measures.</li>
+                </ul>
+            </div>
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="C:\Users\Surya\OneDrive\Desktop\Web_App\images\WhatsApp Image 2024-07-21 at 02.29.41_2c05e28f.jpg" alt="Feature Image 1">
+                    <img src="C:\Users\Surya\OneDrive\Desktop\Web_App\images\WhatsApp Image 2024-07-14 at 21.53.23_13a62c6b.jpg"alt="Feature Image 2">
+                    <img src="https://via.placeholder.com/1200x600" alt="Feature Image 3">
+                </div>
+                <div class="carousel-buttons">
+                    <button class="carousel-button" onclick="prevSlide()">&#10094;</button>
+                    <button class="carousel-button" onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+            <div class="founders">
+                <h2>Meet Our Team</h2>
+                <div class="founder-group">
+                    <div class="founder">
+                        <img src="./assests/syrya.jpg" alt="Suryadev Singh Rathore">
+                        <p><strong>Suryadev Singh Rathore</strong><br>CEO and Co-founder</p>
+                    </div>
+                    <div class="founder">
+                        <img src="./assests/shubham.jpg" alt="Shubham Hajela">
+                        <p><strong>Shubham Hajela</strong><br>CTO and Co-founder</p>
+                    </div>
+                    <div class="founder">
+                        <img src="./assests/abhay.jpg" alt="Abhay Singh">
+                        <p><strong>Abhay Singh</strong><br>COO</p>
+                    </div>
+                    <div class="founder">
+                        <img src="./assests/vishesh.jpg" alt="Vishesh Jangid">
+                        <p><strong>Vishesh Jangid</strong><br>CMO</p>
+                    </div>
+                    <div class="founder">
+                        <img src="./assests/sanidhya.jpg" alt="Sanidhya">
+                        <p><strong>Sanidhya</strong><br>CFO</p>
+                    </div>
+                </div>
+            </div>
+            <a href="home.html" class="go-back-button">Go Back to Home</a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 StudPath. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-images img');
+            if (index >= slides.length) currentSlide = 0;
+            if (index < 0) currentSlide = slides.length - 1;
+            slides.forEach((slide, i) => {
+                const offset = 100 * (i - currentSlide);
+                const zIndex = i === currentSlide ? 1 : 0;
+                const scale = i === currentSlide ? 1 : 0.8;
+                slide.style.transform = `translateX(${offset}%) scale(${scale})`;
+                slide.style.zIndex = zIndex;
+            });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>

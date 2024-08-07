@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Management System</title>
+    <link rel="stylesheet" href="college-management.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E3FCFF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #55C5CC;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            height: 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin: 0 10px;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        .nav-links a:hover {
+            background-color: #ACEBF9;
+            border-radius: 5px;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        .management-dashboard {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .management-section {
+            background-color: #ffffff;
+            border: 1px solid #ACEBF9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .management-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .management-section h2 {
+            color: #55C5CC;
+            margin-bottom: 10px;
+        }
+        .management-section p {
+            color: #555555;
+            margin-bottom: 10px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #62C1D6;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #A5EAFA;
+        }
+        .management-section img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #55C5CC;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .rectangle-box {
+            background-color: #ffffff;
+            border: 1px solid #ACEBF9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .rectangle-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .rectangle-box img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .rectangle-box h3 {
+            color: #55C5CC;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="C:/Users/Surya/Dropbox/lw/project/images/Ayalogo.webp" alt="Arya College Logo" class="circular-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="management-dashboard">
+            <h1>College Management Dashboard</h1>
+            <div class="management-section">
+                <img src="path/to/image1.jpg" alt="Student Records">
+                <h2>Student Records</h2>
+                <p>Manage and view student records, grades, and performance.</p>
+                <a href="student-records.html" class="cta-button">View Records</a>
+            </div>
+            <div class="management-section">
+                <img src="path/to/image2.jpg" alt="Course Management">
+                <h2>Course Management</h2>
+                <p>Update and manage courses, subjects, and schedules.</p>
+                <a href="course-management.html" class="cta-button">Manage Courses</a>
+            </div>
+            <div class="management-section">
+                <img src="path/to/image3.jpg" alt="Attendance Tracking">
+                <h2>Attendance Tracking</h2>
+                <p>Track and manage student and faculty attendance.</p>
+                <a href="attendance-tracking.html" class="cta-button">Track Attendance</a>
+            </div>
+            <div class="management-section">
+                <img src="path/to/image4.jpg" alt="Student Analysis">
+                <h2>Student Analysis</h2>
+                <p>Analyze student performance and generate reports.</p>
+                <a href="student-analysis.html" class="cta-button">Analyze Performance</a>
+            </div>
+            <div class="management-section">
+                <img src="path/to/image5.jpg" alt="Time Table">
+                <h2>Time Table</h2>
+                <p>View and manage class schedules and timetables.</p>
+                <a href="time-table.html" class="cta-button">View Timetable</a>
+            </div>
+            <div class="management-section">
+                <img src="path/to/image6.jpg" alt="Results">
+                <h2>Results</h2>
+                <p>Publish and manage examination results.</p>
+                <a href="results.html" class="cta-button">View Results</a>
+            </div>
+            <div class="management-section">
+                <img src="path/to/image7.jpg" alt="Other Features">
+                <h2>Other Features</h2>
+                <p>Explore additional student management system features.</p>
+                <a href="other-features.html" class="cta-button">Explore Features</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 StudPath. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <title>StudPath - Home</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        /* Chatbot Button Styles */
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            cursor: pointer;
+            z-index: 1000;
+            background-color: #55C5CC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Popup message styles */
+        .popup-messages {
+            position: fixed;
+            bottom: 100px; /* Adjust as needed to position the message above the chatbot button */
+            right: 35px;
+            z-index: 1001;
+            text-align: center;
+        }
+
+        .popup-messages .message {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px;
+            max-width: 200px;
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .popup-messages .message::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #ffffff transparent transparent transparent;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="./images/Studpath.jpg" alt="StudPath Logo" class="circular-logo">
+                <span>StudPath</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="about.html">
+                    <span class="material-icons-sharp">today</span>
+                    <h3>About</h3>
+                </a>
+                <a href="signup.html">
+                    <span class="material-icons-sharp">person</span>
+                    <h3>Student Sign Up</h3>
+                </a>
+                <a href="Collegesignin.html">
+                    <span class="material-icons-sharp">business</span>
+                    <h3>College Admin</h3>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <video autoplay muted loop class="background-video">
+                <source src="./assests/animation.mp4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to StudPath</h1>
+                <p>Empowering students, transforming education.</p>
+                <a href="features.html" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Our Features</h2>
+
+            <div class="feature-box">
+                <img src="./assests/journey.jpg" alt="Tracking Student Journey">
+                <h3>Tracking Student Journey</h3>
+                <p>Monitor every aspect of your academic journey from start to finish. Stay updated with your progress and achievements.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="./assests/personalization.png" alt="Personalized Guidance">
+                <h3>Personalized Guidance</h3>
+                <p>Receive expert advice and personalized recommendations to navigate through your college experience successfully.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="./assests/im1.png" alt="Student Management">
+                <h3>Student Management</h3>
+                <p>Efficiently manage student information, track performance, and streamline administrative tasks.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="./assests/13796.jpg" alt="Transforming Education">
+                <h3>Transforming Education</h3>
+                <p>Embrace innovative approaches and technologies to transform the educational experience.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="./assests/obe.jpg" alt="Promoting Outcome-Based Education">
+                <h3>Outcome-Based Education</h3>
+                <p>Focus on achieving measurable outcomes to ensure academic excellence and student success.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="./assests/comm.png" alt="Community Support">
+                <h3>Community Support</h3>
+                <p>Engage with a vibrant community of students, educators, and professionals for support and collaboration.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="./assests/secure.jpg
+                " alt="Secure Platform">
+                <h3>Secure Platform</h3>
+                <p>Benefit from a secure and reliable platform that ensures the safety and privacy of your data.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="./assests/library-488690_1920.jpg" alt="Resource Library">
+                <h3>Resource Library</h3>
+                <p>Access a vast library of resources including lecture notes, study guides, and recommended tools.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 StudPath. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <a href="chatbot.html" class="chatbot-button">
+        <img src="./assests/chatbot.jpeg" alt="Chatbot Icon">
+    </a>
+
+    <div class="popup-messages" id="popupMessages">
+        <div class="message">How can I help you?</div>
+        <div class="message">Hello!</div>
+        <div class="message">Need assistance?</div>
+        <div class="message">Ask me anything!</div>
+    </div>
+
+    <script>
+        const popupMessages = document.getElementById('popupMessages');
+        const messages = popupMessages.querySelectorAll('.message');
+
+        let currentMessageIndex = 0; // Start at the first message
+
+        function showNextMessage() {
+            messages.forEach((message, index) => {
+                message.style.opacity = index === currentMessageIndex ? 1 : 0;
+            });
+            setTimeout(() => {
+                currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                setTimeout(showNextMessage, 500); // Pause between hiding one message and showing the next
+            }, 2000); // Display duration of each message
+        }
+
+        showNextMessage(); // Start displaying messages
+    </script>
+</body>
+</html>

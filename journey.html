@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="shortcut icon" href="./images/Studpath.jpg">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="journey.css">
+</head>
+<body>
+    <header>
+        <div class="logo" title="StudPath">
+            <img src="./images/Studpath.jpg" alt="StudPath Logo">
+            <h2>StudPath</h2>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="./images/Profile-1.jpeg" alt="Profile Photo">
+                    </div>
+                    <div class="info">
+                        <p><b>John Doe</b></p>
+                        <small class="text-muted">Student ID: 12345678</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Department</h5>
+                    <p>Computer Science & Engineering</p>
+                    <h5>Email</h5>
+                    <p>john.doe@college.edu</p>
+                    <h5>Contact</h5>
+                    <p>9876543210</p>
+                </div>
+            </div>
+        </aside>
+        <main>
+            <h1>Student Results</h1>
+            <div class="subjects">
+                <div class="subject-box">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Semester 1</h3>
+                    <div class="time-slot">
+                        <p>
+                            <a href="#">View Results</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="subject-box">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Semester 2</h3>
+                    <div class="time-slot">
+                        <p>
+                            <a href="#">View Results</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="subject-box">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Semester 3</h3>
+                    <div class="time-slot">
+                        <p>
+                            <a href="#">View Results</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="subject-box">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Semester 4</h3>
+                    <div class="time-slot">
+                        <p>
+                            <a href="#">View Results</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="subject-box">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Semester 5</h3>
+                    <div class="time-slot">
+                        <p>
+                            <a href="#">View Results</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="subject-box">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Semester 6</h3>
+                    <div class="time-slot">
+                        <p>
+                            <a href="#">View Results</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="subject-box">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Semester 7</h3>
+                    <div class="time-slot">
+                        <p>
+                            <a href="#">View Results</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="subject-box">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Semester 8</h3>
+                    <div class="time-slot">
+                        <p>
+                            <a href="#">View Results</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="graphs">
+                <div class="graph-box">
+                    <h3>Performance Graph</h3>
+                    <canvas id="performanceGraph"></canvas>
+                </div>
+                <div class="graph-box">
+                    <h3>Attendance Graph</h3>
+                    <canvas id="attendanceGraph"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

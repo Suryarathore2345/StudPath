@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="shortcut icon" href="./images/Studpath.jpg">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            left: 30px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 4px solid #082b50; /* Add border here */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tooltip {
+            position: fixed;
+            bottom: 110px;
+            left: 30px;
+            background-color: #000;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: none;
+            font-size: 12px;
+        }
+
+        .chatbot-button:hover + .tooltip {
+            display: block;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" title="StudPath">
+            <img src="./images/Studpath.jpg" alt="">
+            <h2>StudPath</h2>
+        </div>
+        <div class="navbar">
+            <a href="home.html" class="active">
+                <span class="material-icons-sharp">home</span>
+                <h3>Home</h3>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">groups</span>
+                <h3>Students</h3>
+            </a>
+            <a href="timetable.html" onclick="timeTableAll()">
+                <span class="material-icons-sharp">today</span>
+                <h3>Time Table</h3>
+            </a> 
+            <a href="result.html">
+                <span class="material-icons-sharp">grading</span>
+                <h3>Grades</h3>
+            </a>
+            <a href="password.html">
+                <span class="material-icons-sharp">password</span>
+                <h3>Change Password</h3>
+            </a>
+            <a href="home.html">
+                <span class="material-icons-sharp" onclick="">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="./assests/images.jpeg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Prof. Vijay</b> </p>
+                        <small class="text-muted">Professor ID: 42209100</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Department</h5>
+                    <p>Artificial Intelligence & Data Science</p>
+                    <h5>Teacher ID</h5>
+                    <p>22EAIAD101</p>
+                    <h5>Email</h5>
+                    <p>vijay@rtu.edu</p>
+                    <h5>Contact</h5>
+                    <p>9087654321</p>
+                    <h5>Address</h5>
+                    <p>51-A, C-scheme, Jaipur</p>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <h1>Class Schedule</h1>
+            <div class="subjects">
+                <div class="subject">
+                    <span class="material-icons-sharp">architecture</span>
+                    <h3>Engineering Graphics</h3>
+                    <h2>Room 101</h2>
+                    <small class="text-muted">Monday & Wednesday</small>
+                </div>
+                <div class="subject">
+                    <span class="material-icons-sharp">functions</span>
+                    <h3>Mathematical Engineering</h3>
+                    <h2>Room 202</h2>
+                    <small class="text-muted">Tuesday & Thursday</small>
+                </div>
+                <div class="subject">
+                    <span class="material-icons-sharp">computer</span>
+                    <h3>Computer Architecture</h3>
+                    <h2>Room 303</h2>
+                    <small class="text-muted">Wednesday & Friday</small>
+                </div>
+                <div class="subject">
+                    <span class="material-icons-sharp">dns</span>
+                    <h3>Database Management</h3>
+                    <h2>Room 404</h2>
+                    <small class="text-muted">Monday & Thursday</small>
+                </div>
+                <div class="subject">
+                    <span class="material-icons-sharp">router</span>
+                    <h3>Network Security</h3>
+                    <h2>Room 505</h2>
+                    <small class="text-muted">Tuesday & Friday</small>
+                </div>
+            </div>
+
+            <div class="timetable" id="timetable">
+                <div>
+                    <span id="prevDay">&lt;</span>
+                    <h2>Today's Timetable</h2>
+                    <span id="nextDay">&gt;</span>
+                </div>
+                <span class="closeBtn" onclick="timeTableAll()">X</span>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Room No.</th>
+                            <th>Subject</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </main>
+
+        <div class="right">
+            <div class="announcements">
+                <h2>Announcements</h2>
+                <div class="updates">
+                    <div class="message">
+                        <p> <b>Academic</b> Faculty meeting on curriculum development.</p>
+                        <small class="text-muted">2 days ago</small>
+                    </div>
+                    <div class="message">
+                        <p> <b>Research</b> Submit your paper for the AI conference.</p>
+                        <small class="text-muted">5 days ago</small>
+                    </div>
+                    <div class="message">
+                        <p> <b>Administration</b> Complete your annual performance review.</p>
+                        <small class="text-muted">7 days ago</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaves">
+                <h2>Studentss on leave</h2>
+                <div class="teacher">
+                    <div class="profile-photo"><img src="./assests/images (1).jpeg" alt=""></div>
+                    <div class="info">
+                        <h3>Yash Aggarwal - Sec-H</h3>
+                        <small class="text-muted">Full Day</small>
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo"><img src="./images/profile-4.jpg" alt=""></div>
+                    <div class="info">
+                        <h3>Vishesh Jangid Sec-H</h3>
+                        <small class="text-muted">Half Day</small>
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo"><img src="./images/profile-3.jpg" alt=""></div>
+                    <div class="info">
+                        <h3>Ms. Arzoo Sheikh</h3>
+                        <small class="text-muted">Medical Leave</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Button -->
+    <a href="chatbot.html" class="chatbot-button">
+        <img src="./assests/chatbot.jpeg" alt="Chatbot Icon">
+    </a>
+    <div class="tooltip">Chatbot</div>
+
+    <script src="timeTable.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('edit-profile-btn').addEventListener('click', function() {
+            document.getElementById('edit-profile-form').classList.toggle('active');
+        });
+
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Make an AJAX request to save the data (you'll need to implement this server-side)
+            fetch('/update-profile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update profile details on the page
+                document.querySelector('.info p b').innerText = data.name;
+                document.querySelector('.about p:nth-child(2)').innerText = data.department;
+                document.querySelector('.about p:nth-child(4)').innerText = data['employee-id'];
+                document.querySelector('.about p:nth-child(6)').innerText = data.email;
+                document.querySelector('.about p:nth-child(8)').innerText = data.contact;
+                document.querySelector('.about p:nth-child(10)').innerText = data.address;
+                
+                // Hide the form
+                document.getElementById('edit-profile-form').classList.remove('active');
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

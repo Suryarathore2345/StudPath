@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="college-management.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E3FCFF;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #55C5CC;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;  /* Adjusted height for better visibility */
+            width: 40px;   /* Adjusted width for better visibility */
+            border-radius: 50%;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin: 0 10px;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        .nav-links a:hover {
+            background-color: #ACEBF9;
+            border-radius: 5px;
+        }
+        main {
+            padding: 20px;
+        }
+        .contact-section {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            border: 1px solid #ACEBF9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .contact-section h2 {
+            color: #55C5CC;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .contact-section form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-section label {
+            margin-bottom: 5px;
+            color: #555555;
+        }
+        .contact-section input, .contact-section textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ACEBF9;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .contact-section button {
+            background-color: #62C1D6;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-section button:hover {
+            background-color: #A5EAFA;
+        }
+        footer {
+            background-color: #55C5CC;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="contact-section">
+            <h2>Contact Us</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 StudPath All rights reserved.</p>
+    </footer>
+</body>
+</html>
